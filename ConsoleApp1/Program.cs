@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Program
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             Console.Write("Enter a number:");
-            int number = int.Parse(Console.ReadLine());
-
+            int number;
+            while (!int.TryParse(Console.ReadLine(), out number))
+                {
+                    Console.WriteLine("Invalid input. Please enter integer.");
+                    Console.Write("Enter a number: ");
+                }
             string[] message = { "Even number.", "Odd number." };
-
             Console.WriteLine(message[number & 1]);
         }
     }
